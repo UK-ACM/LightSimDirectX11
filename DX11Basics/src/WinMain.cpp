@@ -15,7 +15,7 @@ int CALLBACK WinMain(
 	_In_ int	  nCmdShow )
 {
 	try {
-		Window wnd(640, 480, "My Window");
+		Window wnd(640, 480, "Donkey nuts");
 
 		MSG message;
 		BOOL gResult;
