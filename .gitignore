@@ -5,5 +5,3 @@ bin-int/
 
 # Files
 *.user
-
-!vendor/bin/premake

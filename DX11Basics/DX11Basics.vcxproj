@@ -134,16 +134,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\App.h" />
     <ClInclude Include="src\Keyboard.h" />
     <ClInclude Include="src\Mouse.h" />
     <ClInclude Include="src\WhalenException.h" />
+    <ClInclude Include="src\WhalenTimer.h" />
     <ClInclude Include="src\WhalenWin.h" />
     <ClInclude Include="src\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\Keyboard.cpp" />
     <ClCompile Include="src\Mouse.cpp" />
     <ClCompile Include="src\WhalenException.cpp" />
+    <ClCompile Include="src\WhalenTimer.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>

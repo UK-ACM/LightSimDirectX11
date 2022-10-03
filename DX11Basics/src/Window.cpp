@@ -79,6 +79,20 @@ void Window::SetTitle(const std::string& title) {
 
 }
 
+std::optional<int> Window::ProcessMessages() {
+	MSG message;
+	while (PeekMessage(&message, nullptr, 0, 0, PM_REMOVE)) // retrieves the next message. If zero means quit and -1 mean error. All else is a message to handle
+	{
+		if (message.message == WM_QUIT)
+			return message.wParam;
+		// execute the message
+		TranslateMessage(&message);
+		DispatchMessage(&message);
+	}
+
+	return {};
+}
+
 LRESULT CALLBACK Window::HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept {
 	if (msg == WM_NCCREATE) {
 		// extract ptr into a window class
