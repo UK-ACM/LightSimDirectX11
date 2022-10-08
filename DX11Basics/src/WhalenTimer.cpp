@@ -2,11 +2,11 @@
 
 using namespace std::chrono;
 
-WhalenTimer::WhalenTimer() {
+WhalenTimer::WhalenTimer() noexcept {
 	last = steady_clock::now();
 }
 
-float WhalenTimer::Mark() {
+float WhalenTimer::Mark() noexcept {
 	const auto old = last;
 	last = steady_clock::now();
 	const duration<float> frametime = last - old;
@@ -14,6 +14,6 @@ float WhalenTimer::Mark() {
 
 }
 
-float WhalenTimer::Peek() const {
+float WhalenTimer::Peek() const noexcept {
 	return duration<float>(steady_clock::now() - last).count();
 }

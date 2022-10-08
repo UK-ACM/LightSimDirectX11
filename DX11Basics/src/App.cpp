@@ -11,14 +11,14 @@ int App::Run() {
 		if (const auto ecode = Window::ProcessMessages()) {
 			return ecode.value();
 		}
+		Sleep(1); // temporary fix for buggy window when setting title repeatedly: REMOVE when not needed
 		DoFrame();
 	}
 
 }
 
 void App::DoFrame() {
-	const float t = timer.Peek();
-	std::ostringstream oss;
-	oss << "Time elapsed: " << std::fixed << std::setprecision(1) << t << "s";
-	//wnd.SetTitle(oss.str());
+	const float c = sin(timer.Peek()) / 2.0f + 0.5f;
+	wnd.Gfx().ClearBuffer(c, c, 1.0f);
+	wnd.Gfx().EndFrame();
 }

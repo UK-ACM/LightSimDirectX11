@@ -64,8 +64,11 @@ Window::Window(int width, int height, const char* name)
 		throw WHWND_LAST_EXCEPT();
 	}
 
-	// display window once created
+	// display window once created, default as hidden
 	ShowWindow(hWnd, SW_SHOWDEFAULT);
+
+	// create Graphics object
+	pGfx = std::make_unique<Graphics>(hWnd);
 }
 
 Window::~Window() {
@@ -84,7 +87,7 @@ std::optional<int> Window::ProcessMessages() {
 	while (PeekMessage(&message, nullptr, 0, 0, PM_REMOVE)) // retrieves the next message. If zero means quit and -1 mean error. All else is a message to handle
 	{
 		if (message.message == WM_QUIT)
-			return message.wParam;
+			return (int)message.wParam;
 		// execute the message
 		TranslateMessage(&message);
 		DispatchMessage(&message);
@@ -246,4 +249,8 @@ HRESULT Window::Exception::GetErrorCode() const noexcept {
 
 std::string Window::Exception::GetErrorString() const noexcept {
 	return TranslateErrorCode(hr);
+}
+
+Graphics& Window::Gfx() {
+	return *pGfx;
 }

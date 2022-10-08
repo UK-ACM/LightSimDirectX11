@@ -5,9 +5,9 @@ using namespace std::chrono;
 // timer class to time functions
 class WhalenTimer {
 public:
-	WhalenTimer();
-	float Mark();
-	float Peek() const;
+	WhalenTimer() noexcept;
+	float Mark() noexcept;
+	float Peek() const noexcept;
 private:
 	steady_clock::time_point last;
 
