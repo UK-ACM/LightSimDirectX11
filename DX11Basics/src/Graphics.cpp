@@ -5,7 +5,8 @@
 
 #pragma comment(lib, "d3d11.lib")
 
-
+// shortcut for smartpointer namespace
+namespace wrl = Microsoft::WRL;
 
 Graphics::Graphics(HWND hWnd) {
 	// define descriptor for the swapchain, includes all settings
@@ -50,20 +51,20 @@ Graphics::Graphics(HWND hWnd) {
 	));
 
 	// gain access to the texture subresource from the swapchain
-	ID3D11Resource* pBackBuffer = nullptr;
-	GFX_THROW_INFO(pSwapchain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**>(&pBackBuffer)));
-	GFX_THROW_INFO(pDevice->CreateRenderTargetView(pBackBuffer,	nullptr,&pTarget));
-	pBackBuffer->Release();
+	wrl::ComPtr<ID3D11Resource> pBackBuffer = nullptr;
+	GFX_THROW_INFO(pSwapchain->GetBuffer(0, __uuidof(ID3D11Resource), &pBackBuffer));
+	GFX_THROW_INFO(pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pTarget));
 
 }
 
-Graphics::~Graphics() {
-	if (pTarget) pTarget->Release();
-	if (pContext) pContext->Release();
-	if (pSwapchain) pSwapchain->Release();
-	if (pDevice) pDevice->Release();
-	
-}
+// no longer needed due to smarter pointer handling
+//Graphics::~Graphics() {
+//	if (pTarget) pTarget->Release();
+//	if (pContext) pContext->Release();
+//	if (pSwapchain) pSwapchain->Release();
+//	if (pDevice) pDevice->Release();
+//	
+//}
 
 void Graphics::EndFrame()
 {
