@@ -86,6 +86,10 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <AssemblerOutput>AssemblyCode</AssemblerOutput>
+    </FxCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -106,6 +110,10 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <AssemblerOutput>AssemblyCode</AssemblerOutput>
+    </FxCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -127,6 +135,10 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <AssemblerOutput>AssemblyCode</AssemblerOutput>
+    </FxCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -134,10 +146,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\dxerr.h" />
+    <ClInclude Include="src\App.h" />
+    <ClInclude Include="src\DXGetErrorDescription.inl" />
+    <ClInclude Include="src\DXGetErrorString.inl" />
+    <ClInclude Include="src\DXTrace.inl" />
     <ClInclude Include="src\DxgiInfoManager.h" />
     <ClInclude Include="src\Graphics.h" />
-    <ClInclude Include="src\App.h" />
     <ClInclude Include="src\GraphicsExceptionMacros.h" />
     <ClInclude Include="src\Keyboard.h" />
     <ClInclude Include="src\Mouse.h" />
@@ -145,23 +159,27 @@
     <ClInclude Include="src\WhalenTimer.h" />
     <ClInclude Include="src\WhalenWin.h" />
     <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\dxerr.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\dxerr.cpp" />
+    <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\DxgiInfoManager.cpp" />
     <ClCompile Include="src\Graphics.cpp" />
-    <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\Keyboard.cpp" />
     <ClCompile Include="src\Mouse.cpp" />
     <ClCompile Include="src\WhalenException.cpp" />
     <ClCompile Include="src\WhalenTimer.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\dxerr.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\DXGetErrorDescription.inl" />
-    <None Include="src\DXGetErrorString.inl" />
-    <None Include="src\DXTrace.inl" />
+    <FxCompile Include="shaders\VertexShader_vs.hlsl">
+      <ShaderType>Vertex</ShaderType>
+      <ObjectFileOutput>shaders/VertexShader_vs.cso</ObjectFileOutput>
+      <AssemblerOutputFile>shaders/VertexShader_vs.asm</AssemblerOutputFile>
+      <AdditionalOptions>/WX %(AdditionalOptions)</AdditionalOptions>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
