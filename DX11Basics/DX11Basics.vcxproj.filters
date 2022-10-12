@@ -85,6 +85,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="shaders\PixelShader_ps.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
     <FxCompile Include="shaders\VertexShader_vs.hlsl">
       <Filter>shaders</Filter>
     </FxCompile>

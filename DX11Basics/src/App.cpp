@@ -2,7 +2,7 @@
 #include <sstream>
 
 App::App()
-	: wnd(640, 480, "Donkey Fart Box")
+	: wnd(800, 600, "Donkey Fart Box")
 {}
 
 // run one loop of message processing

@@ -103,6 +103,11 @@ void Graphics::DrawTestTriangle() {
 		{ -0.5, -0.5 }
 	};
 
+	
+
+	
+
+
 	// creating buffer and descriptor
 	wrl::ComPtr<ID3D11Buffer> pVertexBuffer;
 	D3D11_BUFFER_DESC bd = {};
@@ -122,17 +127,50 @@ void Graphics::DrawTestTriangle() {
 	const UINT offset = 0u;
 
 	// give the buffer to the context and draw
-	pContext->IASetVertexBuffers(0, 1, &pVertexBuffer, &stride, &offset);
+	pContext->IASetVertexBuffers(0, 1, pVertexBuffer.GetAddressOf(), &stride, &offset);
 
 	//create vertex shader
 	wrl::ComPtr<ID3D11VertexShader> pVertexShader;
 	wrl::ComPtr<ID3DBlob> pBlob;
-
 	// read in compiled hlsl file and create shader from it
 	GFX_THROW_INFO(D3DReadFileToBlob(L"shaders/VertexShader_vs.cso", &pBlob));
-	GFX_THROW_INFO(pDevice->CreateVertexShader(pBlob->GetBufferPointer(), pBlob->GetBufferSize(), nullptr , &pVertexShader));
+	GFX_THROW_INFO(pDevice->CreateVertexShader(pBlob->GetBufferPointer(), pBlob->GetBufferSize(), nullptr, &pVertexShader));
 	pContext->VSSetShader(pVertexShader.Get(), nullptr, 0);
 
+	// set input buffer layout
+	wrl::ComPtr<ID3D11InputLayout> pInputLayout;
+	const D3D11_INPUT_ELEMENT_DESC ied[] =
+	{
+		{ "POSITION", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	};
+	GFX_THROW_INFO(pDevice->CreateInputLayout(ied, (UINT)std::size(ied), pBlob->GetBufferPointer(), pBlob->GetBufferSize(), & pInputLayout));
+	pContext->IASetInputLayout(pInputLayout.Get());
+
+	//create pixel shader
+	wrl::ComPtr<ID3D11PixelShader> pPixelShader;
+	// read in compiled hlsl file and create shader from it
+	GFX_THROW_INFO(D3DReadFileToBlob(L"shaders/PixelShader_ps.cso", &pBlob));
+	GFX_THROW_INFO(pDevice->CreatePixelShader(pBlob->GetBufferPointer(), pBlob->GetBufferSize(), nullptr, &pPixelShader));
+	pContext->PSSetShader(pPixelShader.Get(), nullptr, 0);
+
+	// set render target for the pixel shader
+	pContext->OMSetRenderTargets(1u, pTarget.GetAddressOf(), nullptr);
+
+	// set primitive topology - > triangle list of size 1
+	pContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+
+	//configure viewport
+	D3D11_VIEWPORT vp;
+	vp.Width = 800;
+	vp.Height = 600;
+	vp.MinDepth = 0;
+	vp.MaxDepth = 1;
+	vp.TopLeftX = 0;
+	vp.TopLeftY = 0;
+	pContext->RSSetViewports(1, &vp);
+
+	// make draw call
 	GFX_THROW_INFO_ONLY(pContext->Draw((UINT)std::size(vertices), 0u));
 
 }
