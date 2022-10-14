@@ -126,7 +126,7 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
 	switch (msg) {
 	// quit application when closing a window.
 	case WM_CLOSE:
-		PostQuitMessage(69); // create the quit message
+		PostQuitMessage(0); // create the quit message
 		return 0;
 		break;
 

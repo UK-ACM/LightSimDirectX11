@@ -94,17 +94,27 @@ void Graphics::DrawTestTriangle() {
 	HRESULT hr;
 
 	struct Vertex {
-		float x, y;
+		struct {
+			float x, y;
+		} pos;
+		struct {
+			unsigned char r, g, b, a;
+		} color;
 	};
 	// data to fill vertex buffer
-	const Vertex vertices[] = {
-		{ 0, 0.5 },
-		{ 0.5, -0.5 },
-		{ -0.5, -0.5 }
-	};
-
-	
-
+	Vertex vertices[6];
+	vertices[0].pos = { 0.0f, 0.5f };
+	vertices[0].color = { 255, 0, 0, 0 };
+	vertices[1].pos = { 0.5f, -0.5f };
+	vertices[1].color = { 0, 255, 0, 0 };
+	vertices[2].pos = { -0.5f, -0.5f };
+	vertices[2].color = { 0, 0, 255, 0 };
+	vertices[3].pos = { -0.45f, 0.15f };
+	vertices[3].color = { 0, 0, 0, 0 };
+	vertices[4].pos = { 0.45f, 0.15f };
+	vertices[4].color = { 0, 0, 0, 0 };
+	vertices[5].pos = { 0.0f, -0.75f };
+	vertices[5].color = { 0, 0, 0, 0 };
 	
 
 
@@ -129,6 +139,28 @@ void Graphics::DrawTestTriangle() {
 	// give the buffer to the context and draw
 	pContext->IASetVertexBuffers(0, 1, pVertexBuffer.GetAddressOf(), &stride, &offset);
 
+
+	// create index buffer
+	const unsigned short indices[] = {
+		0, 1, 2,
+		0, 2, 3,
+		0, 4, 1,
+		1, 5, 2
+	};
+	wrl::ComPtr<ID3D11Buffer> pIndexBuffer;
+	D3D11_BUFFER_DESC ibd = {};
+	ibd.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	ibd.Usage = D3D11_USAGE_DEFAULT;
+	ibd.CPUAccessFlags = 0u;
+	ibd.MiscFlags = 0u;
+	ibd.ByteWidth = sizeof(indices);
+	ibd.StructureByteStride = sizeof(unsigned short);
+	D3D11_SUBRESOURCE_DATA isd = {};
+	isd.pSysMem = indices;
+	GFX_THROW_INFO(pDevice->CreateBuffer(&ibd, &isd, &pIndexBuffer));
+	pContext->IASetIndexBuffer(pIndexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
+
+
 	//create vertex shader
 	wrl::ComPtr<ID3D11VertexShader> pVertexShader;
 	wrl::ComPtr<ID3DBlob> pBlob;
@@ -141,7 +173,8 @@ void Graphics::DrawTestTriangle() {
 	wrl::ComPtr<ID3D11InputLayout> pInputLayout;
 	const D3D11_INPUT_ELEMENT_DESC ied[] =
 	{
-		{ "POSITION", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "POSITION", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "COLOR", 0, DXGI_FORMAT_R8G8B8A8_UNORM, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0}
 	};
 	GFX_THROW_INFO(pDevice->CreateInputLayout(ied, (UINT)std::size(ied), pBlob->GetBufferPointer(), pBlob->GetBufferSize(), & pInputLayout));
 	pContext->IASetInputLayout(pInputLayout.Get());
@@ -171,7 +204,7 @@ void Graphics::DrawTestTriangle() {
 	pContext->RSSetViewports(1, &vp);
 
 	// make draw call
-	GFX_THROW_INFO_ONLY(pContext->Draw((UINT)std::size(vertices), 0u));
+	GFX_THROW_INFO_ONLY(pContext->DrawIndexed((UINT)std::size(indices), 0u, 0u));
 
 }
 

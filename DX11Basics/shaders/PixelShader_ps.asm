@@ -7,7 +7,8 @@
 //
 // Name                 Index   Mask Register SysValue  Format   Used
 // -------------------- ----- ------ -------- -------- ------- ------
-// no Input
+// COLOR                    0   xyzw        0     NONE   float   xyzw
+//
 //
 // Output signature:
 //
@@ -17,12 +18,14 @@
 //
 ps_5_0
 dcl_globalFlags refactoringAllowed | skipOptimization
+dcl_input_ps linear v0.xyzw
 dcl_output o0.xyzw
 //
 // Initial variable locations:
+//   v0.x <- clr.x; v0.y <- clr.y; v0.z <- clr.z; v0.w <- clr.w; 
 //   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
 //
 #line 3 "C:\Dev\DX11Basics\DX11Basics\shaders\PixelShader_ps.hlsl"
-mov o0.xyzw, l(1.000000,1.000000,1.000000,1.000000)
+mov o0.xyzw, v0.xyzw
 ret 
 // Approximately 2 instruction slots used

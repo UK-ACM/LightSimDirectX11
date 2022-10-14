@@ -8,25 +8,39 @@
 // Name                 Index   Mask Register SysValue  Format   Used
 // -------------------- ----- ------ -------- -------- ------- ------
 // POSITION                 0   xy          0     NONE   float   xy  
+// COLOR                    0   xyzw        1     NONE   float   xyzw
 //
 //
 // Output signature:
 //
 // Name                 Index   Mask Register SysValue  Format   Used
 // -------------------- ----- ------ -------- -------- ------- ------
-// SV_POSITION              0   xyzw        0      POS   float   xyzw
+// COLOR                    0   xyzw        0     NONE   float   xyzw
+// SV_POSITION              0   xyzw        1      POS   float   xyzw
 //
 vs_5_0
 dcl_globalFlags refactoringAllowed | skipOptimization
 dcl_input v0.xy
-dcl_output_siv o0.xyzw, position
+dcl_input v1.xyzw
+dcl_output o0.xyzw
+dcl_output_siv o1.xyzw, position
+dcl_temps 2
 //
 // Initial variable locations:
 //   v0.x <- pos.x; v0.y <- pos.y; 
-//   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
+//   v1.x <- clr.x; v1.y <- clr.y; v1.z <- clr.z; v1.w <- clr.w; 
+//   o1.x <- <main return value>.pos.x; o1.y <- <main return value>.pos.y; o1.z <- <main return value>.pos.z; o1.w <- <main return value>.pos.w; 
+//   o0.x <- <main return value>.clr.x; o0.y <- <main return value>.clr.y; o0.z <- <main return value>.clr.z; o0.w <- <main return value>.clr.w
 //
-#line 3 "C:\Dev\DX11Basics\DX11Basics\shaders\VertexShader_vs.hlsl"
-mov o0.xy, v0.xyxx
-mov o0.zw, l(0,0,0,1.000000)
+#line 9 "C:\Dev\DX11Basics\DX11Basics\shaders\VertexShader_vs.hlsl"
+mov r0.xy, v0.xyxx  // r0.x <- vso.pos.x; r0.y <- vso.pos.y
+mov r0.zw, l(0,0,0,1.000000)  // r0.z <- vso.pos.z; r0.w <- vso.pos.w
+
+#line 10
+mov r1.xyzw, v1.xyzw  // r1.x <- vso.clr.x; r1.y <- vso.clr.y; r1.z <- vso.clr.z; r1.w <- vso.clr.w
+
+#line 11
+mov o0.xyzw, r1.xyzw
+mov o1.xyzw, r0.xyzw
 ret 
-// Approximately 3 instruction slots used
+// Approximately 6 instruction slots used
