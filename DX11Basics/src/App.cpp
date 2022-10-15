@@ -2,7 +2,7 @@
 #include <sstream>
 
 App::App()
-	: wnd(800, 600, "Donkey Fart Box")
+	: wnd(800, 600, "The fattest window ever")
 {}
 
 // run one loop of message processing
@@ -20,6 +20,6 @@ int App::Run() {
 void App::DoFrame() {
 	const float c = sin(timer.Peek()) / 2.0f + 0.5f;
 	wnd.Gfx().ClearBuffer(c, c, 1.0f);
-	wnd.Gfx().DrawTestTriangle();
+	wnd.Gfx().DrawTestTriangle(timer.Peek());
 	wnd.Gfx().EndFrame();
 }
