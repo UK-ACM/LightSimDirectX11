@@ -1,17 +1,14 @@
-struct VSOut {
-	float4 clr : COLOR;
-	float4 pos : SV_POSITION;
-};
+//struct VSOut {
+//	uint tid : SV_PrimitiveID;
+//	float4 pos : SV_POSITION;
+//};
 
 cbuffer CBuf {
 	matrix transform;
 
 };
 
-VSOut main( float2 pos : POSITION, float4 clr : COLOR)
+float4 main(float3 pos : POSITION) : SV_POSITION
 {
-	VSOut vso;
-	vso.pos = mul(transform, float4(pos.x, pos.y, 0.0f, 1.0f));
-	vso.clr = clr;
-	return vso;
+	return mul(transform, float4(pos, 1.0f));
 }
