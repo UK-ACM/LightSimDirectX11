@@ -1,6 +1,12 @@
 #pragma once
 #include "Drawable.h"
 #include "IndexBuffer.h"
+#include "Topology.h"
+#include "VertexBuffer.h"
+#include "PixelShader.h"
+#include "VertexShader.h"
+#include "InputLayout.h"
+#include "TransformCbuf.h"
 
 template<class T> 
 class DrawableBase : public Drawable {

@@ -72,6 +72,12 @@
     <ClInclude Include="src\graphics\Bindables\PixelShader.h">
       <Filter>src\graphics\Bindables</Filter>
     </ClInclude>
+    <ClInclude Include="src\graphics\Bindables\Sampler.h">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Bindables\Texture.h">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClInclude>
     <ClInclude Include="src\graphics\Bindables\Topology.h">
       <Filter>src\graphics\Bindables</Filter>
     </ClInclude>
@@ -99,6 +105,9 @@
     <ClInclude Include="src\graphics\Drawables\Pyramid.h">
       <Filter>src\graphics\Drawables</Filter>
     </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\Sheet.h">
+      <Filter>src\graphics\Drawables</Filter>
+    </ClInclude>
     <ClInclude Include="src\graphics\Drawables\primitives\Cone.h">
       <Filter>src\graphics\Drawables\primitives</Filter>
     </ClInclude>
@@ -117,7 +126,13 @@
     <ClInclude Include="src\graphics\Drawables\primitives\Sphere.h">
       <Filter>src\graphics\Drawables\primitives</Filter>
     </ClInclude>
+    <ClInclude Include="src\graphics\GDIPlusManager.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
     <ClInclude Include="src\graphics\Graphics.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Surface.h">
       <Filter>src\graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\WhalenMath.h">
@@ -173,6 +188,12 @@
     <ClCompile Include="src\graphics\Bindables\PixelShader.cpp">
       <Filter>src\graphics\Bindables</Filter>
     </ClCompile>
+    <ClCompile Include="src\graphics\Bindables\Sampler.cpp">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Bindables\Texture.cpp">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClCompile>
     <ClCompile Include="src\graphics\Bindables\Topology.cpp">
       <Filter>src\graphics\Bindables</Filter>
     </ClCompile>
@@ -197,7 +218,16 @@
     <ClCompile Include="src\graphics\Drawables\Pyramid.cpp">
       <Filter>src\graphics\Drawables</Filter>
     </ClCompile>
+    <ClCompile Include="src\graphics\Drawables\Sheet.cpp">
+      <Filter>src\graphics\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\GDIPlusManager.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
     <ClCompile Include="src\graphics\Graphics.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Surface.cpp">
       <Filter>src\graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\window\Keyboard.cpp">
@@ -221,6 +251,12 @@
       <Filter>shaders</Filter>
     </FxCompile>
     <FxCompile Include="shaders\ColorIndex_vs.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\Texture_ps.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\Texture_vs.hlsl">
       <Filter>shaders</Filter>
     </FxCompile>
   </ItemGroup>
