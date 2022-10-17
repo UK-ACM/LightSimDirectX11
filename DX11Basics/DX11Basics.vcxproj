@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>IS_DEBUG=true;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\macros;src\window;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\macros;src\window;src\graphics\Bindables;src\graphics\Drawables;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -100,7 +100,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>IS_DEBUG=false;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\macros;src\window;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\macros;src\window;src\graphics\Bindables;src\graphics\Drawables;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -124,7 +124,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\macros;src\window;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\macros;src\window;src\graphics\Bindables;src\graphics\Drawables;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -153,19 +153,20 @@
     <ClInclude Include="src\error_handling\WhalenException.h" />
     <ClInclude Include="src\error_handling\WhalenTimer.h" />
     <ClInclude Include="src\error_handling\dxerr.h" />
-    <ClInclude Include="src\graphics\Bindable.h" />
-    <ClInclude Include="src\graphics\BindableBase.h" />
-    <ClInclude Include="src\graphics\Box.h" />
-    <ClInclude Include="src\graphics\ConstantBuffers.h" />
-    <ClInclude Include="src\graphics\Drawable.h" />
+    <ClInclude Include="src\graphics\Bindables\Bindable.h" />
+    <ClInclude Include="src\graphics\Bindables\BindableBase.h" />
+    <ClInclude Include="src\graphics\Bindables\ConstantBuffers.h" />
+    <ClInclude Include="src\graphics\Bindables\IndexBuffer.h" />
+    <ClInclude Include="src\graphics\Bindables\InputLayout.h" />
+    <ClInclude Include="src\graphics\Bindables\PixelShader.h" />
+    <ClInclude Include="src\graphics\Bindables\Topology.h" />
+    <ClInclude Include="src\graphics\Bindables\TransformCbuf.h" />
+    <ClInclude Include="src\graphics\Bindables\VertexBuffer.h" />
+    <ClInclude Include="src\graphics\Bindables\VertexShader.h" />
+    <ClInclude Include="src\graphics\Drawables\Box.h" />
+    <ClInclude Include="src\graphics\Drawables\Drawable.h" />
+    <ClInclude Include="src\graphics\Drawables\DrawableBase.h" />
     <ClInclude Include="src\graphics\Graphics.h" />
-    <ClInclude Include="src\graphics\IndexBuffer.h" />
-    <ClInclude Include="src\graphics\InputLayout.h" />
-    <ClInclude Include="src\graphics\PixelShader.h" />
-    <ClInclude Include="src\graphics\Topology.h" />
-    <ClInclude Include="src\graphics\TransformCbuf.h" />
-    <ClInclude Include="src\graphics\VertexBuffer.h" />
-    <ClInclude Include="src\graphics\VertexShader.h" />
     <ClInclude Include="src\macros\GraphicsExceptionMacros.h" />
     <ClInclude Include="src\macros\WindowsExceptionMacros.h" />
     <ClInclude Include="src\window\Keyboard.h" />
@@ -180,17 +181,17 @@
     <ClCompile Include="src\error_handling\WhalenException.cpp" />
     <ClCompile Include="src\error_handling\WhalenTimer.cpp" />
     <ClCompile Include="src\error_handling\dxerr.cpp" />
-    <ClCompile Include="src\graphics\Bindable.cpp" />
-    <ClCompile Include="src\graphics\Box.cpp" />
-    <ClCompile Include="src\graphics\Drawable.cpp" />
+    <ClCompile Include="src\graphics\Bindables\Bindable.cpp" />
+    <ClCompile Include="src\graphics\Bindables\IndexBuffer.cpp" />
+    <ClCompile Include="src\graphics\Bindables\InputLayout.cpp" />
+    <ClCompile Include="src\graphics\Bindables\PixelShader.cpp" />
+    <ClCompile Include="src\graphics\Bindables\Topology.cpp" />
+    <ClCompile Include="src\graphics\Bindables\TransformCbuf.cpp" />
+    <ClCompile Include="src\graphics\Bindables\VertexBuffer.cpp" />
+    <ClCompile Include="src\graphics\Bindables\VertexShader.cpp" />
+    <ClCompile Include="src\graphics\Drawables\Box.cpp" />
+    <ClCompile Include="src\graphics\Drawables\Drawable.cpp" />
     <ClCompile Include="src\graphics\Graphics.cpp" />
-    <ClCompile Include="src\graphics\IndexBuffer.cpp" />
-    <ClCompile Include="src\graphics\InputLayout.cpp" />
-    <ClCompile Include="src\graphics\PixelShader.cpp" />
-    <ClCompile Include="src\graphics\Topology.cpp" />
-    <ClCompile Include="src\graphics\TransformCbuf.cpp" />
-    <ClCompile Include="src\graphics\VertexBuffer.cpp" />
-    <ClCompile Include="src\graphics\VertexShader.cpp" />
     <ClCompile Include="src\window\Keyboard.cpp" />
     <ClCompile Include="src\window\Mouse.cpp" />
     <ClCompile Include="src\window\Window.cpp" />

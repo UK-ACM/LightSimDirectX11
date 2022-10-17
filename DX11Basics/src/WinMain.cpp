@@ -14,7 +14,7 @@ int CALLBACK WinMain(
 	_In_ int	  nCmdShow )
 {
 	try {
-		return App{}.Run();
+		return App{1200, 800}.Run();
 		
 	}
 	catch (const WhalenException& e) {

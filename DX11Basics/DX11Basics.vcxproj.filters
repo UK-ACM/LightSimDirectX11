@@ -13,6 +13,12 @@
     <Filter Include="src\graphics">
       <UniqueIdentifier>{2DF282EC-1955-1291-C2DA-4A47AE1CDE13}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\graphics\Bindables">
+      <UniqueIdentifier>{C03E88BC-AC38-B10E-95A5-471F813E177B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\graphics\Drawables">
+      <UniqueIdentifier>{D18A6E37-BD84-9789-A6F1-2D9A928AFDF5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\macros">
       <UniqueIdentifier>{A1B0936A-8D68-D5B7-F66F-AE13E24670A8}</UniqueIdentifier>
     </Filter>
@@ -45,43 +51,46 @@
     <ClInclude Include="src\error_handling\dxerr.h">
       <Filter>src\error_handling</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\Bindable.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="src\graphics\Bindables\Bindable.h">
+      <Filter>src\graphics\Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\BindableBase.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="src\graphics\Bindables\BindableBase.h">
+      <Filter>src\graphics\Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\Box.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="src\graphics\Bindables\ConstantBuffers.h">
+      <Filter>src\graphics\Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\ConstantBuffers.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="src\graphics\Bindables\IndexBuffer.h">
+      <Filter>src\graphics\Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\Drawable.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="src\graphics\Bindables\InputLayout.h">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Bindables\PixelShader.h">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Bindables\Topology.h">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Bindables\TransformCbuf.h">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Bindables\VertexBuffer.h">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Bindables\VertexShader.h">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\Box.h">
+      <Filter>src\graphics\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\Drawable.h">
+      <Filter>src\graphics\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\DrawableBase.h">
+      <Filter>src\graphics\Drawables</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\Graphics.h">
-      <Filter>src\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\IndexBuffer.h">
-      <Filter>src\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\InputLayout.h">
-      <Filter>src\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\PixelShader.h">
-      <Filter>src\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\Topology.h">
-      <Filter>src\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\TransformCbuf.h">
-      <Filter>src\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\VertexBuffer.h">
-      <Filter>src\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\VertexShader.h">
       <Filter>src\graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\macros\GraphicsExceptionMacros.h">
@@ -122,37 +131,37 @@
     <ClCompile Include="src\error_handling\dxerr.cpp">
       <Filter>src\error_handling</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\Bindable.cpp">
-      <Filter>src\graphics</Filter>
+    <ClCompile Include="src\graphics\Bindables\Bindable.cpp">
+      <Filter>src\graphics\Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\Box.cpp">
-      <Filter>src\graphics</Filter>
+    <ClCompile Include="src\graphics\Bindables\IndexBuffer.cpp">
+      <Filter>src\graphics\Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\Drawable.cpp">
-      <Filter>src\graphics</Filter>
+    <ClCompile Include="src\graphics\Bindables\InputLayout.cpp">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Bindables\PixelShader.cpp">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Bindables\Topology.cpp">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Bindables\TransformCbuf.cpp">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Bindables\VertexBuffer.cpp">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Bindables\VertexShader.cpp">
+      <Filter>src\graphics\Bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Drawables\Box.cpp">
+      <Filter>src\graphics\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Drawables\Drawable.cpp">
+      <Filter>src\graphics\Drawables</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\Graphics.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\IndexBuffer.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\InputLayout.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\PixelShader.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\Topology.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\TransformCbuf.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\VertexBuffer.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\VertexShader.cpp">
       <Filter>src\graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\window\Keyboard.cpp">

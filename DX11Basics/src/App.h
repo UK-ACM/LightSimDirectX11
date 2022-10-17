@@ -4,7 +4,7 @@
 
 class App {
 public:
-	App();
+	App(int width, int height);
 	~App();
 
 	int Run();
