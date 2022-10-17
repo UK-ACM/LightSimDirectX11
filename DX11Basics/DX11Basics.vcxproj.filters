@@ -19,6 +19,9 @@
     <Filter Include="src\graphics\Drawables">
       <UniqueIdentifier>{D18A6E37-BD84-9789-A6F1-2D9A928AFDF5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\graphics\Drawables\primitives">
+      <UniqueIdentifier>{2C28ABE8-9896-0068-E17F-BB674D2DF603}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\macros">
       <UniqueIdentifier>{A1B0936A-8D68-D5B7-F66F-AE13E24670A8}</UniqueIdentifier>
     </Filter>
@@ -90,7 +93,34 @@
     <ClInclude Include="src\graphics\Drawables\DrawableBase.h">
       <Filter>src\graphics\Drawables</Filter>
     </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\Melon.h">
+      <Filter>src\graphics\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\Pyramid.h">
+      <Filter>src\graphics\Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\primitives\Cone.h">
+      <Filter>src\graphics\Drawables\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\primitives\Cube.h">
+      <Filter>src\graphics\Drawables\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\primitives\IndexedTriangleList.h">
+      <Filter>src\graphics\Drawables\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\primitives\Plane.h">
+      <Filter>src\graphics\Drawables\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\primitives\Prism.h">
+      <Filter>src\graphics\Drawables\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\primitives\Sphere.h">
+      <Filter>src\graphics\Drawables\primitives</Filter>
+    </ClInclude>
     <ClInclude Include="src\graphics\Graphics.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\WhalenMath.h">
       <Filter>src\graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\macros\GraphicsExceptionMacros.h">
@@ -161,6 +191,12 @@
     <ClCompile Include="src\graphics\Drawables\Drawable.cpp">
       <Filter>src\graphics\Drawables</Filter>
     </ClCompile>
+    <ClCompile Include="src\graphics\Drawables\Melon.cpp">
+      <Filter>src\graphics\Drawables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Drawables\Pyramid.cpp">
+      <Filter>src\graphics\Drawables</Filter>
+    </ClCompile>
     <ClCompile Include="src\graphics\Graphics.cpp">
       <Filter>src\graphics</Filter>
     </ClCompile>
@@ -175,10 +211,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="shaders\PixelShader_ps.hlsl">
+    <FxCompile Include="shaders\ColorBlend_ps.hlsl">
       <Filter>shaders</Filter>
     </FxCompile>
-    <FxCompile Include="shaders\VertexShader_vs.hlsl">
+    <FxCompile Include="shaders\ColorBlend_vs.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\ColorIndex_ps.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\ColorIndex_vs.hlsl">
       <Filter>shaders</Filter>
     </FxCompile>
   </ItemGroup>

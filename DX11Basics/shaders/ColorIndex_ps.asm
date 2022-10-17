@@ -7,7 +7,7 @@
 // cbuffer CBuf
 // {
 //
-//   float4 face_colors[6];             // Offset:    0 Size:    96
+//   float4 face_colors[8];             // Offset:    0 Size:   128
 //
 // }
 //
@@ -35,7 +35,7 @@
 //
 ps_5_0
 dcl_globalFlags refactoringAllowed | skipOptimization
-dcl_constantbuffer CB0[6], dynamicIndexed
+dcl_constantbuffer CB0[8], dynamicIndexed
 dcl_input_ps_sgv constant v0.x, primitive_id
 dcl_output o0.xyzw
 dcl_temps 1
@@ -44,9 +44,11 @@ dcl_temps 1
 //   v0.x <- tid; 
 //   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
 //
-#line 8 "C:\Dev\DX11Basics\DX11Basics\shaders\PixelShader_ps.hlsl"
+#line 8 "C:\Dev\DX11Basics\DX11Basics\shaders\ColorIndex_ps.hlsl"
 mov r0.x, l(2)
 udiv r0.x, null, v0.x, r0.x
+mov r0.y, l(8)
+udiv null, r0.x, r0.x, r0.y
 mov o0.xyzw, cb0[r0.x + 0].xyzw
 ret 
-// Approximately 4 instruction slots used
+// Approximately 6 instruction slots used

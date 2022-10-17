@@ -25,31 +25,44 @@
 // Name                 Index   Mask Register SysValue  Format   Used
 // -------------------- ----- ------ -------- -------- ------- ------
 // Position                 0   xyz         0     NONE   float   xyz 
+// Color                    0   xyzw        1     NONE   float   xyzw
 //
 //
 // Output signature:
 //
 // Name                 Index   Mask Register SysValue  Format   Used
 // -------------------- ----- ------ -------- -------- ------- ------
-// SV_Position              0   xyzw        0      POS   float   xyzw
+// Color                    0   xyzw        0     NONE   float   xyzw
+// SV_Position              0   xyzw        1      POS   float   xyzw
 //
 vs_5_0
 dcl_globalFlags refactoringAllowed | skipOptimization
 dcl_constantbuffer CB0[4], immediateIndexed
 dcl_input v0.xyz
-dcl_output_siv o0.xyzw, position
-dcl_temps 1
+dcl_input v1.xyzw
+dcl_output o0.xyzw
+dcl_output_siv o1.xyzw, position
+dcl_temps 2
 //
 // Initial variable locations:
 //   v0.x <- pos.x; v0.y <- pos.y; v0.z <- pos.z; 
-//   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
+//   v1.x <- color.x; v1.y <- color.y; v1.z <- color.z; v1.w <- color.w; 
+//   o1.x <- <main return value>.pos.x; o1.y <- <main return value>.pos.y; o1.z <- <main return value>.pos.z; o1.w <- <main return value>.pos.w; 
+//   o0.x <- <main return value>.color.x; o0.y <- <main return value>.color.y; o0.z <- <main return value>.color.z; o0.w <- <main return value>.color.w
 //
-#line 8 "C:\Dev\DX11Basics\DX11Basics\shaders\VertexShader_vs.hlsl"
+#line 15 "C:\Dev\DX11Basics\DX11Basics\shaders\ColorBlend_vs.hlsl"
 mov r0.xyz, v0.xyzx
 mov r0.w, l(1.000000)
-dp4 o0.x, r0.xyzw, cb0[0].xyzw
-dp4 o0.y, r0.xyzw, cb0[1].xyzw
-dp4 o0.z, r0.xyzw, cb0[2].xyzw
-dp4 o0.w, r0.xyzw, cb0[3].xyzw
+dp4 r1.x, r0.xyzw, cb0[0].xyzw  // r1.x <- vso.pos.x
+dp4 r1.y, r0.xyzw, cb0[1].xyzw  // r1.y <- vso.pos.y
+dp4 r1.z, r0.xyzw, cb0[2].xyzw  // r1.z <- vso.pos.z
+dp4 r1.w, r0.xyzw, cb0[3].xyzw  // r1.w <- vso.pos.w
+
+#line 16
+mov r0.xyzw, v1.xyzw  // r0.x <- vso.color.x; r0.y <- vso.color.y; r0.z <- vso.color.z; r0.w <- vso.color.w
+
+#line 17
+mov o0.xyzw, r0.xyzw
+mov o1.xyzw, r1.xyzw
 ret 
-// Approximately 7 instruction slots used
+// Approximately 10 instruction slots used
