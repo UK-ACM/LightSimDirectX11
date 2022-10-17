@@ -5,6 +5,7 @@
 class App {
 public:
 	App();
+	~App();
 
 	int Run();
 private:
@@ -13,4 +14,5 @@ private:
 private:
 	Window wnd;
 	WhalenTimer timer;
+	std::vector<std::unique_ptr<class Box>> boxes;
 };

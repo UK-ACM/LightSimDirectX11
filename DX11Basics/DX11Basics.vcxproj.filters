@@ -7,81 +7,162 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\error_handling">
+      <UniqueIdentifier>{AA5CDDF6-9640-9E4C-FFA0-989FEBA388CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\graphics">
+      <UniqueIdentifier>{2DF282EC-1955-1291-C2DA-4A47AE1CDE13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\macros">
+      <UniqueIdentifier>{A1B0936A-8D68-D5B7-F66F-AE13E24670A8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\window">
+      <UniqueIdentifier>{94D77D82-808F-BFCF-E996-982BD56D5AC0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\App.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\DXGetErrorDescription.inl">
-      <Filter>src</Filter>
+    <ClInclude Include="src\error_handling\DXGetErrorDescription.inl">
+      <Filter>src\error_handling</Filter>
     </ClInclude>
-    <ClInclude Include="src\DXGetErrorString.inl">
-      <Filter>src</Filter>
+    <ClInclude Include="src\error_handling\DXGetErrorString.inl">
+      <Filter>src\error_handling</Filter>
     </ClInclude>
-    <ClInclude Include="src\DXTrace.inl">
-      <Filter>src</Filter>
+    <ClInclude Include="src\error_handling\DXTrace.inl">
+      <Filter>src\error_handling</Filter>
     </ClInclude>
-    <ClInclude Include="src\DxgiInfoManager.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\error_handling\DxgiInfoManager.h">
+      <Filter>src\error_handling</Filter>
     </ClInclude>
-    <ClInclude Include="src\Graphics.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\error_handling\WhalenException.h">
+      <Filter>src\error_handling</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsExceptionMacros.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\error_handling\WhalenTimer.h">
+      <Filter>src\error_handling</Filter>
     </ClInclude>
-    <ClInclude Include="src\Keyboard.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\error_handling\dxerr.h">
+      <Filter>src\error_handling</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mouse.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\graphics\Bindable.h">
+      <Filter>src\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\WhalenException.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\graphics\BindableBase.h">
+      <Filter>src\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\WhalenTimer.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\graphics\Box.h">
+      <Filter>src\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\WhalenWin.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\graphics\ConstantBuffers.h">
+      <Filter>src\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Window.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\graphics\Drawable.h">
+      <Filter>src\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\dxerr.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\graphics\Graphics.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\IndexBuffer.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\InputLayout.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\PixelShader.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Topology.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\TransformCbuf.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\VertexBuffer.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\VertexShader.h">
+      <Filter>src\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\macros\GraphicsExceptionMacros.h">
+      <Filter>src\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="src\macros\WindowsExceptionMacros.h">
+      <Filter>src\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="src\window\Keyboard.h">
+      <Filter>src\window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\window\Mouse.h">
+      <Filter>src\window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\window\WhalenWin.h">
+      <Filter>src\window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\window\Window.h">
+      <Filter>src\window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\DxgiInfoManager.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Graphics.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Keyboard.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Mouse.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\WhalenException.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\WhalenTimer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\WinMain.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="src\error_handling\DxgiInfoManager.cpp">
+      <Filter>src\error_handling</Filter>
     </ClCompile>
-    <ClCompile Include="src\dxerr.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="src\error_handling\WhalenException.cpp">
+      <Filter>src\error_handling</Filter>
+    </ClCompile>
+    <ClCompile Include="src\error_handling\WhalenTimer.cpp">
+      <Filter>src\error_handling</Filter>
+    </ClCompile>
+    <ClCompile Include="src\error_handling\dxerr.cpp">
+      <Filter>src\error_handling</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Bindable.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Box.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Drawable.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Graphics.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\IndexBuffer.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\InputLayout.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\PixelShader.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Topology.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\TransformCbuf.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\VertexBuffer.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\VertexShader.cpp">
+      <Filter>src\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\window\Keyboard.cpp">
+      <Filter>src\window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\window\Mouse.cpp">
+      <Filter>src\window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\window\Window.cpp">
+      <Filter>src\window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

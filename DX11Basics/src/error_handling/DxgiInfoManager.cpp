@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "Graphics.h"
 #include "GraphicsExceptionMacros.h"
+#include "WindowsExceptionMacros.h"
 #include <dxgidebug.h>
 #include <memory>
 

@@ -35,7 +35,7 @@ project "DX11Basics"
 	}
 
 	includedirs {
-		"%{prj.name}/src",
+		"%{prj.name}/src/**",
 	}
 
 	shadermodel("5.0")
@@ -69,18 +69,17 @@ project "DX11Basics"
 		floatingpoint "Fast"
 
 	filter "configurations:Debug"
-		defines "OA_DEBUG"
+		defines {"IS_DEBUG=true" }
 		runtime "Debug"
 		symbols "on"
 		optimize "Debug"
 
 	filter "configurations:Release"
-		defines "OA_RELEASE"
+		defines {"IS_DEBUG=false", "NDEBUG"}
 		runtime "Release"
 		optimize "Speed"
 
 	filter "configurations:Dist"
-		defines "OA_DIST"
 		runtime "Release"
 		optimize "Speed"
 

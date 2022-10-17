@@ -1,14 +1,9 @@
-//struct VSOut {
-//	uint tid : SV_PrimitiveID;
-//	float4 pos : SV_POSITION;
-//};
-
-cbuffer CBuf {
+cbuffer CBuf
+{
 	matrix transform;
-
 };
 
-float4 main(float3 pos : POSITION) : SV_POSITION
+float4 main(float3 pos : Position) : SV_Position
 {
-	return mul(transform, float4(pos, 1.0f));
+	return mul(float4(pos,1.0f),transform);
 }

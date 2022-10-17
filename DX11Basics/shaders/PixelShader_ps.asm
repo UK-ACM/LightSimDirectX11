@@ -31,7 +31,7 @@
 //
 // Name                 Index   Mask Register SysValue  Format   Used
 // -------------------- ----- ------ -------- -------- ------- ------
-// SV_TARGET                0   xyzw        0   TARGET   float   xyzw
+// SV_Target                0   xyzw        0   TARGET   float   xyzw
 //
 ps_5_0
 dcl_globalFlags refactoringAllowed | skipOptimization
@@ -44,7 +44,7 @@ dcl_temps 1
 //   v0.x <- tid; 
 //   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
 //
-#line 7 "C:\Dev\DX11Basics\DX11Basics\shaders\PixelShader_ps.hlsl"
+#line 8 "C:\Dev\DX11Basics\DX11Basics\shaders\PixelShader_ps.hlsl"
 mov r0.x, l(2)
 udiv r0.x, null, v0.x, r0.x
 mov o0.xyzw, cb0[r0.x + 0].xyzw

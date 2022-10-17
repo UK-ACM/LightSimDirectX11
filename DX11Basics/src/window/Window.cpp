@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "WindowsExceptionMacros.h"
 #include <sstream>
 
 Window::WindowClass Window::WindowClass::wndClass;

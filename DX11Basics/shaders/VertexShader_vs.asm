@@ -24,33 +24,32 @@
 //
 // Name                 Index   Mask Register SysValue  Format   Used
 // -------------------- ----- ------ -------- -------- ------- ------
-// POSITION                 0   xyz         0     NONE   float   xyz 
+// Position                 0   xyz         0     NONE   float   xyz 
 //
 //
 // Output signature:
 //
 // Name                 Index   Mask Register SysValue  Format   Used
 // -------------------- ----- ------ -------- -------- ------- ------
-// SV_POSITION              0   xyzw        0      POS   float   xyzw
+// SV_Position              0   xyzw        0      POS   float   xyzw
 //
 vs_5_0
 dcl_globalFlags refactoringAllowed | skipOptimization
 dcl_constantbuffer CB0[4], immediateIndexed
 dcl_input v0.xyz
 dcl_output_siv o0.xyzw, position
-dcl_temps 2
+dcl_temps 1
 //
 // Initial variable locations:
 //   v0.x <- pos.x; v0.y <- pos.y; v0.z <- pos.z; 
 //   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
 //
-#line 13 "C:\Dev\DX11Basics\DX11Basics\shaders\VertexShader_vs.hlsl"
-mul r0.xyzw, v0.xxxx, cb0[0].xyzw
-mul r1.xyzw, v0.yyyy, cb0[1].xyzw
-add r0.xyzw, r0.xyzw, r1.xyzw
-mul r1.xyzw, v0.zzzz, cb0[2].xyzw
-add r0.xyzw, r0.xyzw, r1.xyzw
-mul r1.xyzw, cb0[3].xyzw, l(1.000000, 1.000000, 1.000000, 1.000000)
-add o0.xyzw, r0.xyzw, r1.xyzw
+#line 8 "C:\Dev\DX11Basics\DX11Basics\shaders\VertexShader_vs.hlsl"
+mov r0.xyz, v0.xyzx
+mov r0.w, l(1.000000)
+dp4 o0.x, r0.xyzw, cb0[0].xyzw
+dp4 o0.y, r0.xyzw, cb0[1].xyzw
+dp4 o0.z, r0.xyzw, cb0[2].xyzw
+dp4 o0.w, r0.xyzw, cb0[3].xyzw
 ret 
-// Approximately 8 instruction slots used
+// Approximately 7 instruction slots used
