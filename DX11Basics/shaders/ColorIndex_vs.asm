@@ -44,7 +44,7 @@ dcl_temps 1
 //   v0.x <- pos.x; v0.y <- pos.y; v0.z <- pos.z; 
 //   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
 //
-#line 8 "C:\Dev\DX11Basics\DX11Basics\shaders\ColorIndex_vs.hlsl"
+#line 8 "C:\Users\mrwha\Documents\DX11Basics\DX11Basics\shaders\ColorIndex_vs.hlsl"
 mov r0.xyz, v0.xyzx
 mov r0.w, l(1.000000)
 dp4 o0.x, r0.xyzw, cb0[0].xyzw

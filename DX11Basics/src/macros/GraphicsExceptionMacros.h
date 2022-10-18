@@ -16,6 +16,7 @@
 #define GFX_THROW_INFO_ONLY(call) (call)
 #endif
 
+// defines hr and infoManager in a local scope. Allows the above macros to be used
 #ifdef NDEBUG
 #define INFOMAN(gfx) HRESULT hr;
 #else

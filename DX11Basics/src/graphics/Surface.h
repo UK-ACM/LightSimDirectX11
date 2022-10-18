@@ -9,6 +9,7 @@
 class Surface
 {
 public:
+	// just a wrapper for a 4 byte int: Each byte is a color value 0-255
 	class Color
 	{
 	public:
@@ -94,6 +95,7 @@ public:
 		std::string note;
 	};
 public:
+	// creates a pixel buffer from an image.
 	Surface(unsigned int width, unsigned int height) noexcept;
 	Surface(Surface&& source) noexcept;
 	Surface(Surface&) = delete;

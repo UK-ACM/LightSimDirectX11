@@ -44,7 +44,7 @@ dcl_temps 1
 //   v0.x <- tid; 
 //   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
 //
-#line 8 "C:\Dev\DX11Basics\DX11Basics\shaders\ColorIndex_ps.hlsl"
+#line 8 "C:\Users\mrwha\Documents\DX11Basics\DX11Basics\shaders\ColorIndex_ps.hlsl"
 mov r0.x, l(2)
 udiv r0.x, null, v0.x, r0.x
 mov r0.y, l(8)

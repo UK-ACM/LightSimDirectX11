@@ -13,7 +13,7 @@
 GDIPlusManager gdipm;
 
 App::App(int width, int height)
-	: wnd(width, height, "The fattest window ever")
+	: wnd(width, height, "The fattest window ever") // create the window
 {
 	class Factory
 	{
@@ -88,12 +88,13 @@ int App::Run() {
 }
 
 void App::DoFrame() {
-	auto dt = timer.Mark();
-	wnd.Gfx().ClearBuffer(0.07f, 0.0f, 0.12f);
+	auto dt = timer.Mark(); // gets delta time to update scene
+	wnd.Gfx().ClearBuffer(0.07f, 0.0f, 0.12f); // set background color
 	for (auto& b : drawables)
 	{
+		// update position and draw all drawable objects: Box, Sheet, Pyramid, Melon
 		b->Update(wnd.kbd.KeyIsPressed(VK_SPACE) ? 0.0f : dt);
 		b->Draw(wnd.Gfx());
 	}
-	wnd.Gfx().EndFrame();
+	wnd.Gfx().EndFrame(); // ends frame and clears depth buffer
 }

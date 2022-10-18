@@ -14,6 +14,7 @@ int CALLBACK WinMain(
 	_In_ int	  nCmdShow )
 {
 	try {
+		// creates an App with given size and runs the main application loop
 		return App{1200, 800}.Run();
 		
 	}

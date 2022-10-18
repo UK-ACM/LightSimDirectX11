@@ -7,8 +7,10 @@ public:
 	App(int width, int height);
 	~App();
 
+	// main loop for both the window and DirectX code. Calls DoFrame()
 	int Run();
 private:
+	// execute a single frame
 	void DoFrame();
 
 private:

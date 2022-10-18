@@ -38,7 +38,7 @@ Sheet::Sheet(Graphics& gfx, std::mt19937& rng,
 		model.vertices[2].tex = { 0.0f, 1.0f };
 		model.vertices[3].tex = { 1.0f, 1.0f };
 
-		auto s = Surface::FromFile("images\\kappa50.png");
+		auto s = Surface::FromFile("images\\sadcat.png");
 		AddStaticBind(std::make_unique<Texture>(gfx, s));
 
 		AddStaticBind(std::make_unique<VertexBuffer>(gfx, model.vertices));

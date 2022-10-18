@@ -95,7 +95,7 @@ Graphics::Graphics(HWND hWnd, int width, int height) {
 	GFX_THROW_INFO(pDevice->CreateDepthStencilView(pDepthStencil.Get(), &DSVd, &pDepthStencilView));
 	pContext->OMSetRenderTargets(1u, pTarget.GetAddressOf(), pDepthStencilView.Get());
 
-
+	
 	//configure viewport
 	D3D11_VIEWPORT vp;
 	vp.Width = width;

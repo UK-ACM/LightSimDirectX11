@@ -50,7 +50,7 @@ dcl_temps 2
 //   o1.x <- <main return value>.pos.x; o1.y <- <main return value>.pos.y; o1.z <- <main return value>.pos.z; o1.w <- <main return value>.pos.w; 
 //   o0.x <- <main return value>.tex.x; o0.y <- <main return value>.tex.y
 //
-#line 12 "C:\Dev\DX11Basics\DX11Basics\shaders\Texture_vs.hlsl"
+#line 12 "C:\Users\mrwha\Documents\DX11Basics\DX11Basics\shaders\Texture_vs.hlsl"
 mov r0.xyz, v0.xyzx
 mov r0.w, l(1.000000)
 dp4 r1.x, r0.xyzw, cb0[0].xyzw  // r1.x <- vso.pos.x
