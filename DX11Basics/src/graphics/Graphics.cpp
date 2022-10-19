@@ -4,6 +4,7 @@
 #include <sstream>
 #include <d3dcompiler.h>
 #include <DirectXMath.h>
+#include "imgui_impl_dx11.h"
 
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "D3DCompiler.lib")
@@ -106,16 +107,15 @@ Graphics::Graphics(HWND hWnd, int width, int height) {
 	vp.TopLeftY = 0;
 	pContext->RSSetViewports(1, &vp);
 
+	ImGui_ImplDX11_Init(pDevice.Get(), pContext.Get());
+
 }
 
-// no longer needed due to smarter pointer handling
-//Graphics::~Graphics() {
-//	if (pTarget) pTarget->Release();
-//	if (pContext) pContext->Release();
-//	if (pSwapchain) pSwapchain->Release();
-//	if (pDevice) pDevice->Release();
-//	
-//}
+ //no longer needed due to smarter pointer handling
+Graphics::~Graphics() {
+	 ImGui_ImplDX11_Shutdown();
+	
+}
 
 void Graphics::EndFrame()
 {

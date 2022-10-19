@@ -22,6 +22,9 @@
     <Filter Include="src\graphics\Drawables\primitives">
       <UniqueIdentifier>{2C28ABE8-9896-0068-E17F-BB674D2DF603}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\imgui">
+      <UniqueIdentifier>{57A665B5-C310-1A2C-0C4F-CBD178F8F780}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\macros">
       <UniqueIdentifier>{A1B0936A-8D68-D5B7-F66F-AE13E24670A8}</UniqueIdentifier>
     </Filter>
@@ -138,6 +141,30 @@
     <ClInclude Include="src\graphics\WhalenMath.h">
       <Filter>src\graphics</Filter>
     </ClInclude>
+    <ClInclude Include="src\imgui\imconfig.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imgui.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imgui_impl_dx11.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imgui_impl_win32.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imgui_internal.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imstb_rectpack.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imstb_textedit.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imstb_truetype.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
     <ClInclude Include="src\macros\GraphicsExceptionMacros.h">
       <Filter>src\macros</Filter>
     </ClInclude>
@@ -156,6 +183,7 @@
     <ClInclude Include="src\window\Window.h">
       <Filter>src\window</Filter>
     </ClInclude>
+    <ClInclude Include="src\imgui\ImguiManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp">
@@ -230,6 +258,27 @@
     <ClCompile Include="src\graphics\Surface.cpp">
       <Filter>src\graphics</Filter>
     </ClCompile>
+    <ClCompile Include="src\imgui\imgui.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\imgui_demo.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\imgui_draw.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\imgui_impl_dx11.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\imgui_impl_win32.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\imgui_tables.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui\imgui_widgets.cpp">
+      <Filter>src\imgui</Filter>
+    </ClCompile>
     <ClCompile Include="src\window\Keyboard.cpp">
       <Filter>src\window</Filter>
     </ClCompile>
@@ -239,6 +288,7 @@
     <ClCompile Include="src\window\Window.cpp">
       <Filter>src\window</Filter>
     </ClCompile>
+    <ClCompile Include="src\imgui\ImguiManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders\ColorBlend_ps.hlsl">

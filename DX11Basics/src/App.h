@@ -1,6 +1,7 @@
 #pragma once
 #include "Window.h"
 #include "WhalenTimer.h"
+#include "ImguiManager.h"
 
 class App {
 public:
@@ -14,6 +15,7 @@ private:
 	void DoFrame();
 
 private:
+	ImguiManager imgui;
 	Window wnd;
 	WhalenTimer timer;
 	std::vector<std::unique_ptr<class Drawable>> drawables;

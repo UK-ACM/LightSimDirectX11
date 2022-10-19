@@ -30,12 +30,18 @@ dcl_sampler s0, mode_default
 dcl_resource_texture2d (float,float,float,float) t0
 dcl_input_ps linear v0.xy
 dcl_output o0.xyzw
+dcl_temps 1
 //
 // Initial variable locations:
 //   v0.x <- tc.x; v0.y <- tc.y; 
 //   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
 //
 #line 5 "C:\Users\mrwha\Documents\DX11Basics\DX11Basics\shaders\Texture_ps.hlsl"
-sample_indexable(texture2d)(float,float,float,float) o0.xyzw, v0.xyxx, t0.xyzw, s0
+sample_indexable(texture2d)(float,float,float,float) r0.xyz, v0.xyxx, t0.xyzw, s0
+mov r0.xyz, r0.xyzx  // r0.x <- color.x; r0.y <- color.y; r0.z <- color.z
+
+#line 7
+mov o0.xyz, r0.xyzx
+mov o0.w, l(1.000000)
 ret 
-// Approximately 2 instruction slots used
+// Approximately 5 instruction slots used

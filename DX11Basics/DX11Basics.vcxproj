@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>IS_DEBUG=true;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\macros;src\window;src\graphics\Bindables;src\graphics\Drawables;src\graphics\Drawables\primitives;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\imgui;src\macros;src\window;src\graphics\Bindables;src\graphics\Drawables;src\graphics\Drawables\primitives;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -100,7 +100,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>IS_DEBUG=false;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\macros;src\window;src\graphics\Bindables;src\graphics\Drawables;src\graphics\Drawables\primitives;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\imgui;src\macros;src\window;src\graphics\Bindables;src\graphics\Drawables;src\graphics\Drawables\primitives;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -124,7 +124,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\macros;src\window;src\graphics\Bindables;src\graphics\Drawables;src\graphics\Drawables\primitives;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\error_handling;src\graphics;src\imgui;src\macros;src\window;src\graphics\Bindables;src\graphics\Drawables;src\graphics\Drawables\primitives;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -181,6 +181,15 @@
     <ClInclude Include="src\graphics\Graphics.h" />
     <ClInclude Include="src\graphics\Surface.h" />
     <ClInclude Include="src\graphics\WhalenMath.h" />
+    <ClInclude Include="src\imgui\imconfig.h" />
+    <ClInclude Include="src\imgui\imgui.h" />
+    <ClInclude Include="src\imgui\ImguiManager.h" />
+    <ClInclude Include="src\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="src\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="src\imgui\imgui_internal.h" />
+    <ClInclude Include="src\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\imgui\imstb_truetype.h" />
     <ClInclude Include="src\macros\GraphicsExceptionMacros.h" />
     <ClInclude Include="src\macros\WindowsExceptionMacros.h" />
     <ClInclude Include="src\window\Keyboard.h" />
@@ -190,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\imgui\ImguiManager.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="src\error_handling\DxgiInfoManager.cpp" />
     <ClCompile Include="src\error_handling\WhalenException.cpp" />
@@ -213,6 +223,13 @@
     <ClCompile Include="src\graphics\GDIPlusManager.cpp" />
     <ClCompile Include="src\graphics\Graphics.cpp" />
     <ClCompile Include="src\graphics\Surface.cpp" />
+    <ClCompile Include="src\imgui\imgui.cpp" />
+    <ClCompile Include="src\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="src\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="src\imgui\imgui_tables.cpp" />
+    <ClCompile Include="src\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\window\Keyboard.cpp" />
     <ClCompile Include="src\window\Mouse.cpp" />
     <ClCompile Include="src\window\Window.cpp" />

@@ -1,6 +1,7 @@
 #include "Window.h"
 #include "WindowsExceptionMacros.h"
 #include <sstream>
+#include "imgui_impl_win32.h"
 
 Window::WindowClass Window::WindowClass::wndClass;
 
@@ -68,11 +69,14 @@ Window::Window(int width, int height, const char* name)
 	// display window once created, default as hidden
 	ShowWindow(hWnd, SW_SHOWDEFAULT);
 
+	ImGui_ImplWin32_Init(hWnd);
+
 	// create Graphics object
 	pGfx = std::make_unique<Graphics>(hWnd, width, height);
 }
 
 Window::~Window() {
+	ImGui_ImplWin32_Shutdown();
 	DestroyWindow(hWnd);
 }
 
@@ -123,6 +127,10 @@ LRESULT CALLBACK Window::HandleMsgThunk(HWND hWnd, UINT msg, WPARAM wParam, LPAR
 }
 
 LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept {
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam)) {
+		return true;
+	}
+
 	// special message handling aside from default procedure
 	switch (msg) {
 	// quit application when closing a window.
