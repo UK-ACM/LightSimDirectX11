@@ -184,6 +184,7 @@
       <Filter>src\window</Filter>
     </ClInclude>
     <ClInclude Include="src\imgui\ImguiManager.h" />
+    <ClInclude Include="src\graphics\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp">
@@ -289,6 +290,7 @@
       <Filter>src\window</Filter>
     </ClCompile>
     <ClCompile Include="src\imgui\ImguiManager.cpp" />
+    <ClCompile Include="src\graphics\Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shaders\ColorBlend_ps.hlsl">

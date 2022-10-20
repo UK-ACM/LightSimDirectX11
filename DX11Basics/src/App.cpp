@@ -6,8 +6,6 @@
 #include "Sheet.h"
 #include "WhalenMath.h"
 #include "GDIPlusManager.h"
-#include "imgui_impl_dx11.h"
-#include "imgui_impl_win32.h"
 #include "imgui.h"
 #include <memory>
 #include <algorithm>
@@ -91,8 +89,10 @@ int App::Run() {
 }
 
 void App::DoFrame() {
-	auto dt = timer.Mark(); // gets delta time to update scene
-	wnd.Gfx().ClearBuffer(0.07f, 0.0f, 0.12f); // set background color
+	auto dt = timer.Mark() * speed_factor; // gets delta time to update scene
+	
+	wnd.Gfx().BeginFrame(0.07f, 0.0f, 0.12f);
+	wnd.Gfx().SetCamera(cam.GetMatrix());
 	for (auto& b : drawables)
 	{
 		// update position and draw all drawable objects: Box, Sheet, Pyramid, Melon
@@ -100,15 +100,21 @@ void App::DoFrame() {
 		b->Draw(wnd.Gfx());
 	}
 
-	ImGui_ImplDX11_NewFrame();
-	ImGui_ImplWin32_NewFrame();
-	ImGui::NewFrame();
+	if (wnd.Gfx().GetImguiEnable()) {
+		if (ImGui::Begin("Simulation Speed")) {
+			ImGui::SliderFloat("Speed Factor", &speed_factor, 0.0f, 4.0f);
+			ImGui::Text("Application Average %.3f ms/frame (%.1f FPS)", 1000.0f/ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+			ImGui::Text("Status: %s", wnd.kbd.KeyIsPressed(VK_SPACE) ? "PAUSED" : "RUNNING (hold spacebar to pause)");
+			if (ImGui::Button("Reset Speed", ImVec2(100, 20))) {
+				speed_factor = 1.0f;
+			}
 
-	static bool show_demo_window = true;
-	if (show_demo_window) {
-		ImGui::ShowDemoWindow(&show_demo_window);
+		}
+		ImGui::End();
+			
+		cam.SpawnControlWindow();
+		
 	}
-	ImGui::Render();
-	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+
 	wnd.Gfx().EndFrame(); // ends frame and clears depth buffer
 }

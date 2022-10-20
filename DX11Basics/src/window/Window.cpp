@@ -130,6 +130,7 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
 	if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam)) {
 		return true;
 	}
+	const auto& imio = ImGui::GetIO();
 
 	// special message handling aside from default procedure
 	switch (msg) {
@@ -147,20 +148,24 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
 	// Keyboard checking
 	case WM_SYSKEYDOWN: // track the alt and F10 keys
 	case WM_KEYDOWN:
+		if (imio.WantCaptureKeyboard) break;
 		if (!(lParam & 0x40000000) || kbd.AutorepeatIsEnabled()) { // only updates is autorepeat is enabled or bit 30 is not set (bit that is 1 if last message was same key)
 			kbd.OnKeyPressed(static_cast<unsigned char>(wParam));
 		}
 		break;
 	case WM_SYSKEYUP:
 	case WM_KEYUP:
+		if (imio.WantCaptureKeyboard) break;
 		kbd.OnKeyReleased(static_cast<unsigned char>(wParam));
 		break;
 	case WM_CHAR:
+		if (imio.WantCaptureKeyboard) break;
 		kbd.OnChar(static_cast<unsigned char>(wParam));
 		break;
 
 	// Mouse Checking Messages
 	case WM_MOUSEMOVE: {
+		if (imio.WantCaptureKeyboard) break;
 		const POINTS pt = MAKEPOINTS(lParam);
 		//check if mouse is in client region
 		if (pt.x >= 0 && pt.x < width && pt.y >= 0 && pt.y < height) {
@@ -184,30 +189,35 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
 		break;
 	}
 	case WM_LBUTTONDOWN: {
+		if (imio.WantCaptureKeyboard) break;
 		const POINTS pt = MAKEPOINTS(lParam);
 		mouse.OnLeftPressed(pt.x, pt.y);
 		break; 
 	}
 		
 	case WM_RBUTTONDOWN: {
+		if (imio.WantCaptureKeyboard) break;
 		const POINTS pt = MAKEPOINTS(lParam);
 		mouse.OnRightPressed(pt.x, pt.y);
 		break;
 	}
 		
 	case WM_LBUTTONUP: {
+		if (imio.WantCaptureKeyboard) break;
 		const POINTS pt = MAKEPOINTS(lParam);
 		mouse.OnLeftReleased(pt.x, pt.y);
 		break;
 	}
 		
 	case WM_RBUTTONUP: {
+		if (imio.WantCaptureKeyboard) break;
 		const POINTS pt = MAKEPOINTS(lParam);
 		mouse.OnRightReleased(pt.x, pt.y);
 		break;
 	}
 		
 	case WM_MOUSEWHEEL: {
+		if (imio.WantCaptureKeyboard) break;
 		const POINTS pt = MAKEPOINTS(lParam);
 		// get the wheel delta and send to mouse to calculate how many multiples of 120 have occured 
 		mouse.OnWheelDelta(pt.x, pt.y, GET_WHEEL_DELTA_WPARAM(wParam));

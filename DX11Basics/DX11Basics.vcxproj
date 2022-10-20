@@ -165,6 +165,7 @@
     <ClInclude Include="src\graphics\Bindables\TransformCbuf.h" />
     <ClInclude Include="src\graphics\Bindables\VertexBuffer.h" />
     <ClInclude Include="src\graphics\Bindables\VertexShader.h" />
+    <ClInclude Include="src\graphics\Camera.h" />
     <ClInclude Include="src\graphics\Drawables\Box.h" />
     <ClInclude Include="src\graphics\Drawables\Drawable.h" />
     <ClInclude Include="src\graphics\Drawables\DrawableBase.h" />
@@ -199,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\graphics\Camera.cpp" />
     <ClCompile Include="src\imgui\ImguiManager.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="src\error_handling\DxgiInfoManager.cpp" />

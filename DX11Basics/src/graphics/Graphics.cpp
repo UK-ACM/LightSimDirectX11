@@ -5,6 +5,7 @@
 #include <d3dcompiler.h>
 #include <DirectXMath.h>
 #include "imgui_impl_dx11.h"
+#include "imgui_impl_win32.h"
 
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "D3DCompiler.lib")
@@ -119,6 +120,11 @@ Graphics::~Graphics() {
 
 void Graphics::EndFrame()
 {
+	if (imguiEnabled) {
+		ImGui::Render();
+		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	}
+
 	HRESULT hr;
 #ifndef NDEBUG
 	infoManager.Set();
@@ -131,6 +137,18 @@ void Graphics::EndFrame()
 			throw GFX_EXCEPT(hr);
 	}
 	
+}
+
+void Graphics::BeginFrame( float red, float green, float blue) {
+	if (imguiEnabled) {
+		ImGui_ImplDX11_NewFrame();
+		ImGui_ImplWin32_NewFrame();
+		ImGui::NewFrame();
+	}
+
+	const float color[] = { red, green, blue, 1.0f };
+	pContext->ClearRenderTargetView(pTarget.Get(), color);
+	pContext->ClearDepthStencilView(pDepthStencilView.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
 }
 
 void Graphics::ClearBuffer(float red, float green, float blue) noexcept {
@@ -152,6 +170,16 @@ void Graphics::SetProjection(DirectX::FXMMATRIX proj) noexcept
 DirectX::XMMATRIX Graphics::GetProjection() const noexcept
 {
 	return projection;
+}
+
+void Graphics::SetCamera(DirectX::FXMMATRIX cam) noexcept
+{
+	camera = cam;
+}
+
+DirectX::XMMATRIX Graphics::GetCamera() const noexcept
+{
+	return camera;
 }
 
 Graphics::HrException::HrException(int line, const char* file, HRESULT hr, std::vector<std::string> infoMsgs) noexcept

@@ -36,7 +36,7 @@ dcl_temps 1
 //   v0.x <- tc.x; v0.y <- tc.y; 
 //   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
 //
-#line 5 "C:\Users\mrwha\Documents\DX11Basics\DX11Basics\shaders\Texture_ps.hlsl"
+#line 5 "C:\Dev\DX11Basics\DX11Basics\shaders\Texture_ps.hlsl"
 sample_indexable(texture2d)(float,float,float,float) r0.xyz, v0.xyxx, t0.xyzw, s0
 mov r0.xyz, r0.xyzx  // r0.x <- color.x; r0.y <- color.y; r0.z <- color.z
 
