@@ -1,5 +1,5 @@
 #include "App.h"
-#include "Melon.h"
+#include "SolidSphere.h"
 #include "Box.h"
 #include "Pyramid.h"
 #include "Surface.h"
@@ -14,7 +14,8 @@
 GDIPlusManager gdipm;
 
 App::App(int width, int height)
-	: wnd(width, height, "The fattest window ever") // create the window
+	: wnd(width, height, "The fattest window ever"), // create the window
+	light(wnd.Gfx())
 {
 	class Factory
 	{
@@ -27,25 +28,9 @@ App::App(int width, int height)
 		{
 			switch (typedist(rng))
 			{
-			case 0:
-				return std::make_unique<Pyramid>(
-					gfx, rng, adist, ddist,
-					odist, rdist
-					);
-			case 1:
-				return std::make_unique<Box>(
+			case 0:	return std::make_unique<Box>(
 					gfx, rng, adist, ddist,
 					odist, rdist, bdist
-					);
-			case 2:
-				return std::make_unique<Melon>(
-					gfx, rng, adist, ddist,
-					odist, rdist, longdist, latdist
-					);
-			case 3:
-				return std::make_unique<Sheet>(
-					gfx, rng, adist, ddist,
-					odist, rdist
 					);
 			default:
 				assert(false && "bad drawable type in factory");
@@ -62,7 +47,7 @@ App::App(int width, int height)
 		std::uniform_real_distribution<float> bdist{ 0.4f,3.0f };
 		std::uniform_int_distribution<int> latdist{ 5,20 };
 		std::uniform_int_distribution<int> longdist{ 10,40 };
-		std::uniform_int_distribution<int> typedist{ 0,3 };
+		std::uniform_int_distribution<int> typedist{ 0,0 };
 	};
 
 	Factory f(wnd.Gfx());
@@ -93,12 +78,14 @@ void App::DoFrame() {
 	
 	wnd.Gfx().BeginFrame(0.07f, 0.0f, 0.12f);
 	wnd.Gfx().SetCamera(cam.GetMatrix());
+	light.Bind(wnd.Gfx());
 	for (auto& b : drawables)
 	{
-		// update position and draw all drawable objects: Box, Sheet, Pyramid, Melon
+		// update position and draw all drawable objects: Box, Sheet, Pyramid, SolidSphere
 		b->Update(wnd.kbd.KeyIsPressed(VK_SPACE) ? 0.0f : dt);
 		b->Draw(wnd.Gfx());
 	}
+	light.Draw(wnd.Gfx());
 
 	if (wnd.Gfx().GetImguiEnable()) {
 		if (ImGui::Begin("Simulation Speed")) {
@@ -113,6 +100,7 @@ void App::DoFrame() {
 		ImGui::End();
 			
 		cam.SpawnControlWindow();
+		light.SpawnControlWindow();
 		
 	}
 

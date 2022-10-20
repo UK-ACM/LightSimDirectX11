@@ -169,9 +169,9 @@
     <ClInclude Include="src\graphics\Drawables\Box.h" />
     <ClInclude Include="src\graphics\Drawables\Drawable.h" />
     <ClInclude Include="src\graphics\Drawables\DrawableBase.h" />
-    <ClInclude Include="src\graphics\Drawables\Melon.h" />
     <ClInclude Include="src\graphics\Drawables\Pyramid.h" />
     <ClInclude Include="src\graphics\Drawables\Sheet.h" />
+    <ClInclude Include="src\graphics\Drawables\SolidSphere.h" />
     <ClInclude Include="src\graphics\Drawables\primitives\Cone.h" />
     <ClInclude Include="src\graphics\Drawables\primitives\Cube.h" />
     <ClInclude Include="src\graphics\Drawables\primitives\IndexedTriangleList.h" />
@@ -180,11 +180,12 @@
     <ClInclude Include="src\graphics\Drawables\primitives\Sphere.h" />
     <ClInclude Include="src\graphics\GDIPlusManager.h" />
     <ClInclude Include="src\graphics\Graphics.h" />
+    <ClInclude Include="src\graphics\PointLight.h" />
     <ClInclude Include="src\graphics\Surface.h" />
     <ClInclude Include="src\graphics\WhalenMath.h" />
+    <ClInclude Include="src\imgui\ImguiManager.h" />
     <ClInclude Include="src\imgui\imconfig.h" />
     <ClInclude Include="src\imgui\imgui.h" />
-    <ClInclude Include="src\imgui\ImguiManager.h" />
     <ClInclude Include="src\imgui\imgui_impl_dx11.h" />
     <ClInclude Include="src\imgui\imgui_impl_win32.h" />
     <ClInclude Include="src\imgui\imgui_internal.h" />
@@ -200,8 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp" />
-    <ClCompile Include="src\graphics\Camera.cpp" />
-    <ClCompile Include="src\imgui\ImguiManager.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="src\error_handling\DxgiInfoManager.cpp" />
     <ClCompile Include="src\error_handling\WhalenException.cpp" />
@@ -217,14 +216,17 @@
     <ClCompile Include="src\graphics\Bindables\TransformCbuf.cpp" />
     <ClCompile Include="src\graphics\Bindables\VertexBuffer.cpp" />
     <ClCompile Include="src\graphics\Bindables\VertexShader.cpp" />
+    <ClCompile Include="src\graphics\Camera.cpp" />
     <ClCompile Include="src\graphics\Drawables\Box.cpp" />
     <ClCompile Include="src\graphics\Drawables\Drawable.cpp" />
-    <ClCompile Include="src\graphics\Drawables\Melon.cpp" />
     <ClCompile Include="src\graphics\Drawables\Pyramid.cpp" />
     <ClCompile Include="src\graphics\Drawables\Sheet.cpp" />
+    <ClCompile Include="src\graphics\Drawables\SolidSphere.cpp" />
     <ClCompile Include="src\graphics\GDIPlusManager.cpp" />
     <ClCompile Include="src\graphics\Graphics.cpp" />
+    <ClCompile Include="src\graphics\PointLight.cpp" />
     <ClCompile Include="src\graphics\Surface.cpp" />
+    <ClCompile Include="src\imgui\ImguiManager.cpp" />
     <ClCompile Include="src\imgui\imgui.cpp" />
     <ClCompile Include="src\imgui\imgui_demo.cpp" />
     <ClCompile Include="src\imgui\imgui_draw.cpp" />
@@ -257,6 +259,28 @@
       <ShaderType>Vertex</ShaderType>
       <ObjectFileOutput>shaders/ColorIndex_vs.cso</ObjectFileOutput>
       <AssemblerOutputFile>shaders/ColorIndex_vs.asm</AssemblerOutputFile>
+      <AdditionalOptions>/WX %(AdditionalOptions)</AdditionalOptions>
+    </FxCompile>
+    <FxCompile Include="shaders\Phong_ps.hlsl">
+      <ShaderType>Pixel</ShaderType>
+      <ObjectFileOutput>shaders/Phong_ps.cso</ObjectFileOutput>
+      <AssemblerOutputFile>shaders/Phong_ps.asm</AssemblerOutputFile>
+    </FxCompile>
+    <FxCompile Include="shaders\Phong_vs.hlsl">
+      <ShaderType>Vertex</ShaderType>
+      <ObjectFileOutput>shaders/Phong_vs.cso</ObjectFileOutput>
+      <AssemblerOutputFile>shaders/Phong_vs.asm</AssemblerOutputFile>
+      <AdditionalOptions>/WX %(AdditionalOptions)</AdditionalOptions>
+    </FxCompile>
+    <FxCompile Include="shaders\Solid_ps.hlsl">
+      <ShaderType>Pixel</ShaderType>
+      <ObjectFileOutput>shaders/Solid_ps.cso</ObjectFileOutput>
+      <AssemblerOutputFile>shaders/Solid_ps.asm</AssemblerOutputFile>
+    </FxCompile>
+    <FxCompile Include="shaders\Solid_vs.hlsl">
+      <ShaderType>Vertex</ShaderType>
+      <ObjectFileOutput>shaders/Solid_vs.cso</ObjectFileOutput>
+      <AssemblerOutputFile>shaders/Solid_vs.asm</AssemblerOutputFile>
       <AdditionalOptions>/WX %(AdditionalOptions)</AdditionalOptions>
     </FxCompile>
     <FxCompile Include="shaders\Texture_ps.hlsl">
