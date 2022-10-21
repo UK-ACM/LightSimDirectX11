@@ -3,7 +3,6 @@
 #include "Box.h"
 #include "Pyramid.h"
 #include "Surface.h"
-#include "Sheet.h"
 #include "WhalenMath.h"
 #include "GDIPlusManager.h"
 #include "imgui.h"
@@ -26,16 +25,11 @@ App::App(int width, int height)
 		{}
 		std::unique_ptr<Drawable> operator()()
 		{
-			switch (typedist(rng))
-			{
-			case 0:	return std::make_unique<Box>(
-					gfx, rng, adist, ddist,
-					odist, rdist, bdist
-					);
-			default:
-				assert(false && "bad drawable type in factory");
-				return {};
-			}
+			const DirectX::XMFLOAT3 mat = { cdist(rng), cdist(rng), cdist(rng) };
+			return std::make_unique<Box>(
+				gfx, rng, adist, ddist,
+				odist, rdist, bdist, mat
+				);
 		}
 	private:
 		Graphics& gfx;
@@ -45,9 +39,7 @@ App::App(int width, int height)
 		std::uniform_real_distribution<float> odist{ 0.0f,PI * 0.08f };
 		std::uniform_real_distribution<float> rdist{ 6.0f,20.0f };
 		std::uniform_real_distribution<float> bdist{ 0.4f,3.0f };
-		std::uniform_int_distribution<int> latdist{ 5,20 };
-		std::uniform_int_distribution<int> longdist{ 10,40 };
-		std::uniform_int_distribution<int> typedist{ 0,0 };
+		std::uniform_real_distribution<float> cdist{ 0.0f, 1.0f };
 	};
 
 	Factory f(wnd.Gfx());
@@ -78,7 +70,7 @@ void App::DoFrame() {
 	
 	wnd.Gfx().BeginFrame(0.07f, 0.0f, 0.12f);
 	wnd.Gfx().SetCamera(cam.GetMatrix());
-	light.Bind(wnd.Gfx());
+	light.Bind(wnd.Gfx(), cam.GetMatrix());
 	for (auto& b : drawables)
 	{
 		// update position and draw all drawable objects: Box, Sheet, Pyramid, SolidSphere

@@ -108,9 +108,6 @@
     <ClInclude Include="src\graphics\Drawables\Pyramid.h">
       <Filter>src\graphics\Drawables</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\Drawables\Sheet.h">
-      <Filter>src\graphics\Drawables</Filter>
-    </ClInclude>
     <ClInclude Include="src\graphics\Drawables\SolidSphere.h">
       <Filter>src\graphics\Drawables</Filter>
     </ClInclude>
@@ -138,7 +135,7 @@
     <ClInclude Include="src\graphics\Graphics.h">
       <Filter>src\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\PointLight.h">
+    <ClInclude Include="src\graphics\Drawables\PointLight.h">
       <Filter>src\graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\Surface.h">
@@ -192,6 +189,7 @@
     <ClInclude Include="src\window\Window.h">
       <Filter>src\window</Filter>
     </ClInclude>
+    <ClInclude Include="src\graphics\Drawables\TestObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp">
@@ -254,9 +252,6 @@
     <ClCompile Include="src\graphics\Drawables\Pyramid.cpp">
       <Filter>src\graphics\Drawables</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\Drawables\Sheet.cpp">
-      <Filter>src\graphics\Drawables</Filter>
-    </ClCompile>
     <ClCompile Include="src\graphics\Drawables\SolidSphere.cpp">
       <Filter>src\graphics\Drawables</Filter>
     </ClCompile>
@@ -266,7 +261,7 @@
     <ClCompile Include="src\graphics\Graphics.cpp">
       <Filter>src\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\PointLight.cpp">
+    <ClCompile Include="src\graphics\Drawables\PointLight.cpp">
       <Filter>src\graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\Surface.cpp">

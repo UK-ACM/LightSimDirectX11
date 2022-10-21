@@ -4,10 +4,25 @@
 //
 // Buffer Definitions: 
 //
-// cbuffer LightBuf
+// cbuffer LightCBuf
 // {
 //
 //   float3 lightPos;                   // Offset:    0 Size:    12
+//   float3 ambient;                    // Offset:   16 Size:    12
+//   float3 diffuseColor;               // Offset:   32 Size:    12
+//   float diffuseIntensity;            // Offset:   44 Size:     4
+//   float attConst;                    // Offset:   48 Size:     4
+//   float attLin;                      // Offset:   52 Size:     4
+//   float attQuad;                     // Offset:   56 Size:     4
+//
+// }
+//
+// cbuffer ObjectCBuf
+// {
+//
+//   float3 materialColor;              // Offset:    0 Size:    12
+//   float specularIntensity;           // Offset:   12 Size:     4
+//   float specularPower;               // Offset:   16 Size:     4
 //
 // }
 //
@@ -16,7 +31,8 @@
 //
 // Name                                 Type  Format         Dim      HLSL Bind  Count
 // ------------------------------ ---------- ------- ----------- -------------- ------
-// LightBuf                          cbuffer      NA          NA            cb0      1 
+// LightCBuf                         cbuffer      NA          NA            cb0      1 
+// ObjectCBuf                        cbuffer      NA          NA            cb1      1 
 //
 //
 //
@@ -36,58 +52,77 @@
 //
 ps_5_0
 dcl_globalFlags refactoringAllowed | skipOptimization
-dcl_constantbuffer CB0[1], immediateIndexed
+dcl_constantbuffer CB0[4], immediateIndexed
+dcl_constantbuffer CB1[2], immediateIndexed
 dcl_input_ps linear v0.xyz
 dcl_input_ps linear v1.xyz
 dcl_output o0.xyzw
-dcl_temps 3
+dcl_temps 4
 //
 // Initial variable locations:
 //   v0.x <- worldPos.x; v0.y <- worldPos.y; v0.z <- worldPos.z; 
 //   v1.x <- n.x; v1.y <- n.y; v1.z <- n.z; 
 //   o0.x <- <main return value>.x; o0.y <- <main return value>.y; o0.z <- <main return value>.z; o0.w <- <main return value>.w
 //
-#line 7 "C:\Dev\DX11Basics\DX11Basics\shaders\Phong_ps.hlsl"
-mov r0.xyz, l(0.050000,0.050000,0.050000,0)  // r0.x <- ambient.x; r0.y <- ambient.y; r0.z <- ambient.z
-
-#line 10
-mov r0.w, l(1.000000)  // r0.w <- attConst
-
-#line 11
-mov r1.x, l(0.045000)  // r1.x <- attLin
-
-#line 12
-mov r1.y, l(0.007500)  // r1.y <- attQuad
-
-#line 19
-mov r2.xyz, -v0.xyzx
-add r2.xyz, r2.xyzx, cb0[0].xyzx  // r2.x <- vToL.x; r2.y <- vToL.y; r2.z <- vToL.z
-
-#line 20
-dp3 r1.z, r2.xyzx, r2.xyzx
-sqrt r1.z, r1.z  // r1.z <- distToL
-
-#line 21
-div r2.xyz, r2.xyzx, r1.zzzz  // r2.x <- dirToL.x; r2.y <- dirToL.y; r2.z <- dirToL.z
+#line 23 "C:\Dev\DX11Basics\DX11Basics\shaders\Phong_ps.hlsl"
+mov r0.xyz, -v0.xyzx
+add r0.xyz, r0.xyzx, cb0[0].xyzx  // r0.x <- vToL.x; r0.y <- vToL.y; r0.z <- vToL.z
 
 #line 24
-mul r1.x, r1.z, r1.x
-add r0.w, r0.w, r1.x
-mul r1.x, r1.z, r1.z
-mul r1.x, r1.x, r1.y
-add r0.w, r0.w, r1.x
-div r0.w, l(1.000000), r0.w  // r0.w <- att
+dp3 r0.w, r0.xyzx, r0.xyzx
+sqrt r0.w, r0.w  // r0.w <- distToL
 
-#line 27
-mul r1.xyz, r0.wwww, l(10.000000, 2.000000, 2.000000, 0.000000)
-dp3 r0.w, r2.xyzx, v1.xyzx
-max r0.w, r0.w, l(0.000000)
-mul r1.xyz, r0.wwww, r1.xyzx  // r1.x <- diffuse.x; r1.y <- diffuse.y; r1.z <- diffuse.z
+#line 25
+div r1.xyz, r0.xyzx, r0.wwww  // r1.x <- dirToL.x; r1.y <- dirToL.y; r1.z <- dirToL.z
 
 #line 28
+mul r1.w, r0.w, cb0[3].y
+add r1.w, r1.w, cb0[3].x
+mul r0.w, r0.w, r0.w
+mul r0.w, r0.w, cb0[3].z
+add r0.w, r0.w, r1.w
+div r0.w, l(1.000000), r0.w  // r0.w <- att
+
+#line 31
+dp3 r1.w, r0.xyzx, v1.xyzx
+mul r2.xyz, r1.wwww, v1.xyzx  // r2.x <- w.x; r2.y <- w.y; r2.z <- w.z
+
+#line 32
+mul r2.xyz, r2.xyzx, l(2.000000, 2.000000, 2.000000, 0.000000)
+mov r0.xyz, -r0.xyzx
+add r0.xyz, r0.xyzx, r2.xyzx  // r0.x <- r.x; r0.y <- r.y; r0.z <- r.z
+
+#line 35
+mul r2.xyz, cb0[2].wwww, cb0[2].xyzx
+mul r2.xyz, r0.wwww, r2.xyzx
+mul r2.xyz, r2.xyzx, cb1[0].wwww
+mov r0.xyz, -r0.xyzx
+dp3 r1.w, r0.xyzx, r0.xyzx
+rsq r1.w, r1.w
+mul r0.xyz, r0.xyzx, r1.wwww
+dp3 r1.w, v0.xyzx, v0.xyzx
+rsq r1.w, r1.w
+mul r3.xyz, r1.wwww, v0.xyzx
+dp3 r0.x, r0.xyzx, r3.xyzx
+max r0.x, r0.x, l(0.000000)
+log r0.x, r0.x
+mul r0.x, r0.x, cb1[1].x
+exp r0.x, r0.x
+mul r0.xyz, r0.xxxx, r2.xyzx  // r0.x <- specular.x; r0.y <- specular.y; r0.z <- specular.z
+
+#line 39
+mul r2.xyz, cb0[2].wwww, cb0[2].xyzx
+mul r2.xyz, r0.wwww, r2.xyzx
+dp3 r0.w, r1.xyzx, v1.xyzx
+max r0.w, r0.w, l(0.000000)
+mul r1.xyz, r0.wwww, r2.xyzx  // r1.x <- diffuse.x; r1.y <- diffuse.y; r1.z <- diffuse.z
+
+#line 40
+add r1.xyz, r1.xyzx, cb0[1].xyzx
 add r0.xyz, r0.xyzx, r1.xyzx
+mul r0.xyz, r0.xyzx, cb1[0].xyzx
 max r0.xyz, r0.xyzx, l(0.000000, 0.000000, 0.000000, 0.000000)
 min o0.xyz, r0.xyzx, l(1.000000, 1.000000, 1.000000, 0.000000)
 mov o0.w, l(1.000000)
 ret 
-// Approximately 24 instruction slots used
+// Approximately 44 instruction slots used

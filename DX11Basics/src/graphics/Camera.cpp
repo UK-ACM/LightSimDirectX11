@@ -2,6 +2,11 @@
 #include "imgui.h"
 namespace dx = DirectX;
 
+Camera::Camera()
+{
+	Reset();
+}
+
 DirectX::XMMATRIX Camera::GetMatrix() const noexcept
 {
 	const auto pos = dx::XMVector3Transform(
@@ -37,7 +42,7 @@ void Camera::SpawnControlWindow() noexcept
 
 void Camera::Reset() noexcept
 {
-	r = 20.0f;
+	r = 15.0f;
 	theta = 0.0f;
 	phi = 0.0f;
 	pitch = 0.0f;

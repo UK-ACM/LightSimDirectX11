@@ -170,7 +170,6 @@
     <ClInclude Include="src\graphics\Drawables\Drawable.h" />
     <ClInclude Include="src\graphics\Drawables\DrawableBase.h" />
     <ClInclude Include="src\graphics\Drawables\Pyramid.h" />
-    <ClInclude Include="src\graphics\Drawables\Sheet.h" />
     <ClInclude Include="src\graphics\Drawables\SolidSphere.h" />
     <ClInclude Include="src\graphics\Drawables\primitives\Cone.h" />
     <ClInclude Include="src\graphics\Drawables\primitives\Cube.h" />
@@ -178,9 +177,10 @@
     <ClInclude Include="src\graphics\Drawables\primitives\Plane.h" />
     <ClInclude Include="src\graphics\Drawables\primitives\Prism.h" />
     <ClInclude Include="src\graphics\Drawables\primitives\Sphere.h" />
+    <ClInclude Include="src\graphics\Drawables\TestObject.h" />
     <ClInclude Include="src\graphics\GDIPlusManager.h" />
     <ClInclude Include="src\graphics\Graphics.h" />
-    <ClInclude Include="src\graphics\PointLight.h" />
+    <ClInclude Include="src\graphics\Drawables\PointLight.h" />
     <ClInclude Include="src\graphics\Surface.h" />
     <ClInclude Include="src\graphics\WhalenMath.h" />
     <ClInclude Include="src\imgui\ImguiManager.h" />
@@ -220,11 +220,10 @@
     <ClCompile Include="src\graphics\Drawables\Box.cpp" />
     <ClCompile Include="src\graphics\Drawables\Drawable.cpp" />
     <ClCompile Include="src\graphics\Drawables\Pyramid.cpp" />
-    <ClCompile Include="src\graphics\Drawables\Sheet.cpp" />
     <ClCompile Include="src\graphics\Drawables\SolidSphere.cpp" />
     <ClCompile Include="src\graphics\GDIPlusManager.cpp" />
     <ClCompile Include="src\graphics\Graphics.cpp" />
-    <ClCompile Include="src\graphics\PointLight.cpp" />
+    <ClCompile Include="src\graphics\Drawables\PointLight.cpp" />
     <ClCompile Include="src\graphics\Surface.cpp" />
     <ClCompile Include="src\imgui\ImguiManager.cpp" />
     <ClCompile Include="src\imgui\imgui.cpp" />

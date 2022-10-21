@@ -1,15 +1,19 @@
-cbuffer LightBuf {
+cbuffer LightCBuf {
 	float3 lightPos;
+    float3 ambient;
+    float3 diffuseColor;
+    float diffuseIntensity;
+    float attConst;
+    float attLin;
+    float attQuad;
 };
 
-// some constants for light calcs, will be extracted later
-static const float3 materialColor = { 0.7f, 0.7f, 0.9f };
-static const float3 ambient = { 0.05f, 0.05f, 0.05f };
-static const float3 diffuseColor = { 1, 0.2, 0.2 };
-static const float diffuseIntensity = 10.0f;
-static const float attConst = 1.0f;
-static const float attLin = 0.045f;
-static const float attQuad = 0.0075f;
+cbuffer ObjectCBuf
+{
+    float3 materialColor;
+    float specularIntensity;
+    float specularPower;
+};
 
 
 
@@ -23,7 +27,15 @@ float4 main(float3 worldPos : Position, float3 n : normal) : SV_TARGET
 	// diffuse attenuation
     const float att = 1.0f / (attConst + attLin * distToL + attQuad * (distToL * distToL));
 
+    // reflected light normal
+    const float3 w = n * dot(vToL, n);
+    const float3 r = w * 2.0f - vToL;
+    
+    // calculate specular light component
+    const float3 specular = att * (diffuseColor * diffuseIntensity) * specularIntensity * pow(max(0.0f, dot(normalize(-r), normalize(worldPos))), specularPower);
+    
+    
 	// diffuse calc
 	const float3 diffuse = diffuseColor * diffuseIntensity * att * max(0.0f, dot(dirToL, n));
-	return float4(saturate(diffuse + ambient), 1.0f);
+    return float4(saturate((diffuse + ambient + specular) * materialColor), 1.0f);
 }
